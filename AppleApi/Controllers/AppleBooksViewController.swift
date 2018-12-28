@@ -23,6 +23,7 @@ class AppleBooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        appleTableView.dataSource = self
+        searchResults(keyWord: "swift")
         //AppleAPI.searchResults()
         
         
@@ -36,12 +37,12 @@ class AppleBooksViewController: UIViewController {
 
     
     func searchResults(keyWord: String) {
-        AppleAPI.searchResults(keyword: "ios"){ (error, events) in
+        AppleAPI.searchResults(keyword: "swift"){ (error, results) in
             if let error = error{
                 print("error: \(error)")
-            }else if let results = self.result {
+            }else if let results = results {
                 self.results = results
-                print("\(events.count)")
+                print("\(results.count)")
             }
         }
         
