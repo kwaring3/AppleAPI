@@ -14,9 +14,9 @@ struct AppleBookData: Codable {
 }
 struct Result: Codable  {
     let trackName: String
-    let releaseDate: String
+    let releaseDate: String?
     let kind: String
-    let price:Int
-    let description: String
-    let averageUserRating: Int
+    let price: Double?
+    let description: String?
+    let averageUserRating: Double?
 }
