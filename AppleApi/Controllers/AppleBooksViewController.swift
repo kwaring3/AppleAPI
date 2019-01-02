@@ -57,6 +57,7 @@ extension AppleBooksViewController: UITableViewDataSource {
         let cell = appleTableView.dequeueReusableCell(withIdentifier: "AppleCell" , for: indexPath)
         let resultsToSet = results[indexPath.row]
         cell.textLabel?.text = resultsToSet.trackName
+        cell.detailTextLabel?.text = resultsToSet.description
         return cell
     }
     
