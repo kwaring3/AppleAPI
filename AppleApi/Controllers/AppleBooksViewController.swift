@@ -15,6 +15,7 @@ class AppleBooksViewController: UIViewController {
     private var results = [Result](){
         didSet {
             DispatchQueue.main.async {
+                self.title = "Books (\(self.results.count))"
                 self.appleTableView.reloadData()
             }
         }

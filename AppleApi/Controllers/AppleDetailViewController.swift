@@ -29,19 +29,23 @@ class AppleDetailViewController: UIViewController {
         title = result.trackName
         
         if let rating = result.averageUserRating{
-            ratingLabel.text = "\(result.averageUserRating)"
+            ratingLabel.text = "Rating: \(rating)"
+        }else{
+           ratingLabel.text =  "n/a"
         }
 
         if let price = result.price {
-            priceLabel.text = "\(result.price)"
+            priceLabel.text = "Price: \(price)"
+        }else {
+            priceLabel.text = "n/a"
         }
 //
         nameLabel.text = result.trackName
         textView.text = result.description
         releaseDateLabel.text = result.releaseDate
         kindLabel.text = result.kind
-        ratingLabel.text = "Rating: \(result.averageUserRating)"
-        priceLabel.text = "Price: $\(result.price)"
+        //ratingLabel.text = "Rating: \(result.averageUserRating)"
+        //priceLabel.text = "Price: $\(result.price)"
         
         
         
