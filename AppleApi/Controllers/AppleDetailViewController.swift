@@ -35,15 +35,17 @@ class AppleDetailViewController: UIViewController {
         }
 
         if let price = result.price {
-            priceLabel.text = "Price: \(price)"
+            priceLabel.text = "Price: $\(price)"
         }else {
             priceLabel.text = "n/a"
         }
-//
         nameLabel.text = result.trackName
-        textView.text = result.description
-        releaseDateLabel.text = result.releaseDate
+        //textView.text = result.description
+        //releaseDateLabel.text = result.releaseDate
         kindLabel.text = result.kind
+        let five = result.description?.replacingOccurrences(of: "<[^>]+>", with: "")
+        textView.text = five
+        
         //ratingLabel.text = "Rating: \(result.averageUserRating)"
         //priceLabel.text = "Price: $\(result.price)"
         

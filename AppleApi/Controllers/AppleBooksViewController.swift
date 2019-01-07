@@ -25,7 +25,8 @@ class AppleBooksViewController: UIViewController {
         super.viewDidLoad()
        appleTableView.dataSource = self
         searchResults(keyWord: "swift")
-        //AppleAPI.searchResults()
+        appleTableView.delegate = self
+        
         
         
     }
@@ -59,8 +60,15 @@ extension AppleBooksViewController: UITableViewDataSource {
         let resultsToSet = results[indexPath.row]
         cell.textLabel?.text = resultsToSet.trackName
         cell.detailTextLabel?.text = resultsToSet.description
+        cell.imageView?.image = UIImage(named: "closedBook")
+        
         return cell
     }
     
     
+}
+extension AppleBooksViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }

@@ -17,6 +17,7 @@
 		1F0DF4E221D6A17C0043EBB3 /* AppleBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF4E121D6A17C0043EBB3 /* AppleBooks.swift */; };
 		1F0DF4E821D6AC470043EBB3 /* AppleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF4E721D6AC470043EBB3 /* AppleAPI.swift */; };
 		1F0DF4EA21D6B0DA0043EBB3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF4E921D6B0DA0043EBB3 /* NetworkHelper.swift */; };
+		1F4D6B3921E3ABCE0008BE1A /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D6B3821E3ABCE0008BE1A /* CoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1F0DF4E121D6A17C0043EBB3 /* AppleBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleBooks.swift; sourceTree = "<group>"; };
 		1F0DF4E721D6AC470043EBB3 /* AppleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAPI.swift; sourceTree = "<group>"; };
 		1F0DF4E921D6B0DA0043EBB3 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		1F4D6B3821E3ABCE0008BE1A /* CoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		1F0DF4E321D6A3690043EBB3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F4D6B3821E3ABCE0008BE1A /* CoverViewController.swift */,
 				1F0DF4DD21D6A0180043EBB3 /* AppleBooksViewController.swift */,
 				1F0DF4DF21D6A0D00043EBB3 /* AppleDetailViewController.swift */,
 				1F0DF4E721D6AC470043EBB3 /* AppleAPI.swift */,
@@ -184,6 +187,7 @@
 			files = (
 				1F0DF4EA21D6B0DA0043EBB3 /* NetworkHelper.swift in Sources */,
 				1F0DF4DE21D6A0180043EBB3 /* AppleBooksViewController.swift in Sources */,
+				1F4D6B3921E3ABCE0008BE1A /* CoverViewController.swift in Sources */,
 				1F0DF4CE21D69EAA0043EBB3 /* ViewController.swift in Sources */,
 				1F0DF4E021D6A0D00043EBB3 /* AppleDetailViewController.swift in Sources */,
 				1F0DF4E821D6AC470043EBB3 /* AppleAPI.swift in Sources */,
