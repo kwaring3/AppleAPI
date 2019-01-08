@@ -9,9 +9,18 @@
 import UIKit
 
 class AppleBooksViewController: UIViewController {
-
-    @IBOutlet weak var appleTableView: UITableView!
     
+    @IBOutlet weak var appleTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var viewControllerState: SearchState = .displayAllResults {
+        didSet {
+            DispatchQueue.main.async {
+                self.appleTableView.reloadData()
+            }
+        }
+    }
+    var searchResults = [Result]()
     private var results = [Result](){
         didSet {
             DispatchQueue.main.async {
@@ -21,11 +30,17 @@ class AppleBooksViewController: UIViewController {
         }
     }
     
+    enum SearchState {
+        case isBeingSeached
+        case displayAllResults
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-       appleTableView.dataSource = self
-        searchResults(keyWord: "swift")
+        appleTableView.dataSource = self
+        getSwiftBooks()
         appleTableView.delegate = self
+        searchBar.delegate = self
         
         
         
@@ -36,9 +51,11 @@ class AppleBooksViewController: UIViewController {
         destination.result = result
     }
     
-
+    func getBooks(named keyword: String) {
+        searchResults = results.filter {$0.trackName.contains(keyword)}
+    }
     
-    func searchResults(keyWord: String) {
+    func getSwiftBooks() {
         AppleAPI.searchResults(keyword: "swift"){ (error, results) in
             if let error = error{
                 print("error: \(error)")
@@ -52,12 +69,19 @@ class AppleBooksViewController: UIViewController {
 }
 extension AppleBooksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return results.count
+        switch viewControllerState{
+        case.isBeingSeached:
+            return searchResults.count
+        case.displayAllResults:
+            return results.count
+        }
+        
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = appleTableView.dequeueReusableCell(withIdentifier: "AppleCell" , for: indexPath)
-        let resultsToSet = results[indexPath.row]
+        let resultsToSet = viewControllerState == .displayAllResults ? results[indexPath.row]: searchResults[indexPath.row]
         cell.textLabel?.text = resultsToSet.trackName
         cell.detailTextLabel?.text = resultsToSet.description
         cell.imageView?.image = UIImage(named: "closedBook")
@@ -72,3 +96,32 @@ extension AppleBooksViewController: UITableViewDelegate{
         return 100
     }
 }
+
+extension AppleBooksViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //searchBar.resignFirstResponder()
+        //        guard let text = searchBar.text,
+        //            let encodedSearchText = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+        guard let text = searchBar.text else {
+            return
+        }
+        if text == "" {
+            viewControllerState = .displayAllResults
+            searchResults = []
+        } else {
+            viewControllerState = .isBeingSeached
+            getBooks(named: text)
+        }
+    }
+    
+}
+
+
+
+

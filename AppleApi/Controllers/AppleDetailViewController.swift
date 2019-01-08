@@ -11,6 +11,7 @@ import UIKit
 class AppleDetailViewController: UIViewController {
     public var result: Result!
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
@@ -23,6 +24,13 @@ class AppleDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateEventUI()
+        
+    }
+    
+    @IBAction func buttonIsPressed(_ sender: UIButton) {
+        let bookLink = "https://itunes.apple.com/us/book/id\(result.trackId)"
+        guard let url = URL(string: bookLink) else {return}
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
         
     }
     private func updateEventUI() {
@@ -43,7 +51,7 @@ class AppleDetailViewController: UIViewController {
         //textView.text = result.description
         //releaseDateLabel.text = result.releaseDate
         kindLabel.text = result.kind
-        let five = result.description?.replacingOccurrences(of: "<[^>]+>", with: "")
+        let five = result.description?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         textView.text = five
         
         //ratingLabel.text = "Rating: \(result.averageUserRating)"

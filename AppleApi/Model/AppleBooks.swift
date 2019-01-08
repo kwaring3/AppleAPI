@@ -19,4 +19,5 @@ struct Result: Codable  {
     let price: Double?
     let description: String?
     let averageUserRating: Double?
+    let trackId: Int
 }
